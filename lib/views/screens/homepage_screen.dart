@@ -22,9 +22,8 @@ class _HomepageScreenState extends State<HomepageScreen> {
         title: Text(
           appName,
           style: TextStyle(
-            color: theme.appBarTheme.toolbarTextStyle!.color,
-            fontWeight: theme.appBarTheme.toolbarTextStyle!.fontWeight,
-          ),
+              color: theme.appBarTheme.toolbarTextStyle!.color,
+              fontWeight: theme.appBarTheme.toolbarTextStyle!.fontWeight),
         ),
         actions: [
           IconButton(

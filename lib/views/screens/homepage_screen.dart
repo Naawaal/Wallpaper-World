@@ -42,30 +42,39 @@ class _HomepageScreenState extends State<HomepageScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SearchBarWidget(),
-            const ListviewCategoryWidget(),
-            SizedBox(
-              width: Get.width,
-              height: Get.height,
-              child: GridView.builder(
-                itemCount: 10,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    height: 100,
-                    width: 50,
-                    color: Colors.amber,
-                  );
-                },
+      body: Column(
+        children: [
+          SearchBarWidget(),
+          const ListviewCategoryWidget(),
+          SizedBox(
+            width: Get.width,
+            height: Get.height,
+            child: GridView.builder(
+              shrinkWrap: true,
+              itemCount: 10,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                mainAxisExtent: 400,
               ),
-            )
-          ],
-        ),
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 100,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    border: Border.all(
+                      color: Colors.grey,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                );
+              },
+            ),
+          ).marginSymmetric(horizontal: 5),
+        ],
       ),
     );
   }

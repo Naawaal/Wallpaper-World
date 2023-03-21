@@ -3,19 +3,13 @@ import 'package:get/get.dart';
 import 'package:wallpaper_world/consts/text.dart';
 import 'package:wallpaper_world/controllers/theme_controller.dart';
 import 'package:wallpaper_world/views/widgets/gridview_widget.dart';
-import 'package:wallpaper_world/views/widgets/listview_category_widget.dart';
 import 'package:wallpaper_world/views/widgets/search_bar_widget.dart';
 
-class HomepageScreen extends StatefulWidget {
-  const HomepageScreen({super.key});
+class SearchScreen extends StatelessWidget {
+  SearchScreen({super.key});
 
-  @override
-  State<HomepageScreen> createState() => _HomepageScreenState();
-}
+  final themeController = Get.put(ThemeController());
 
-final themeController = Get.put(ThemeController());
-
-class _HomepageScreenState extends State<HomepageScreen> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -43,14 +37,11 @@ class _HomepageScreenState extends State<HomepageScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SearchBarWidget(),
-            const ListviewCategoryWidget(),
-            const GridviewWidget(),
-          ],
-        ),
+      body: Column(
+        children: [
+          SearchBarWidget(),
+          GridviewWidget(),
+        ],
       ),
     );
   }

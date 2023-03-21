@@ -22,8 +22,8 @@ class CategoryWidget extends StatelessWidget {
       onTap: () {},
       child: Container(
         alignment: Alignment.center,
-        width: 80,
-        height: 100,
+        width: 100,
+        height: 110,
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(

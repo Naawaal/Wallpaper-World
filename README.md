@@ -1,4 +1,4 @@
-# wallpaper_world
+# Wallpaper World
 
 Wallpaper World is a mobile application that provides users with a vast collection of high-quality wallpapers for their mobile devices. The app offers a user-friendly interface that allows users to easily browse and search for wallpapers by category, color, or theme. The wallpapers are regularly updated to ensure that users have access to the latest and trending designs. Additionally, Wallpaper World allows users to customize their wallpapers by adding filters, stickers, and text to create unique and personalized designs. With its extensive collection and user-friendly interface, Wallpaper World is an excellent app for anyone looking to give their mobile device a fresh and vibrant look.
 

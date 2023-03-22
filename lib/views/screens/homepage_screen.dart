@@ -43,14 +43,25 @@ class _HomepageScreenState extends State<HomepageScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SearchBarWidget(),
-            const ListviewCategoryWidget(),
-            const GridviewWidget(),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SearchBarWidget(),
+          const ListviewCategoryWidget(),
+          Text(
+            "Tranding Wallpapers",
+            style: TextStyle(
+              fontSize: 22,
+              color: theme.primaryColor,
+            ),
+          ).marginOnly(left: 10),
+          const SizedBox(
+            height: 10,
+          ),
+          const Expanded(
+            child: GridviewWidget(),
+          ),
+        ],
       ),
     );
   }

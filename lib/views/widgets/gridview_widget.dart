@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:wallpaper_world/model/tranding_image_model.dart';
+
 import 'package:wallpaper_world/services/api_service/tranding_image_api.dart';
 
 class GridviewWidget extends StatelessWidget {
@@ -9,7 +9,7 @@ class GridviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Photo>>(
+    return FutureBuilder<TrendingImageModel>(
       future: TrandingImageApi().getTrendingImages(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -17,13 +17,12 @@ class GridviewWidget extends StatelessWidget {
         } else if (snapshot.hasError) {
           return const Center(child: Text('Error'));
         } else if (snapshot.hasData) {
-          final trandingWallpaperList = snapshot.data!;
           return SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: GridView.builder(
               shrinkWrap: true,
-              itemCount: trandingWallpaperList.length,
+              itemCount: snapshot.data!.photos!.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
@@ -32,7 +31,6 @@ class GridviewWidget extends StatelessWidget {
               ),
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                final photo = trandingWallpaperList[index];
                 return Container(
                   decoration: BoxDecoration(
                     color: Colors.amber,
@@ -41,8 +39,11 @@ class GridviewWidget extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
-                        image: NetworkImage(photo.src.large2x),
-                        fit: BoxFit.cover),
+                      image: NetworkImage(snapshot
+                          .data!.photos![index].src!.portrait
+                          .toString()),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 );
               },

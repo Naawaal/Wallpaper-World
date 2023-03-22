@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:wallpaper_world/consts/text.dart';
 import 'package:wallpaper_world/controllers/theme_controller.dart';
 import 'package:wallpaper_world/services/api_service/search_image_api.dart';
+import 'package:wallpaper_world/views/screens/full_image_screen.dart';
 import 'package:wallpaper_world/views/widgets/search_bar_widget.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -91,18 +92,33 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       physics: const BouncingScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: Colors.amber,
-                            border: Border.all(
-                              color: Colors.grey,
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                              image: NetworkImage(snapshot
-                                  .data!.photos![index].src!.portrait
-                                  .toString()),
-                              fit: BoxFit.cover,
+                        return InkWell(
+                          onTap: () {
+                            Get.to(
+                              FullImageScreen(
+                                imageUrl: snapshot
+                                    .data!.photos![index].src!.portrait
+                                    .toString(),
+                              ),
+                            );
+                          },
+                          child: Hero(
+                            tag: snapshot.data!.photos![index].src!.portrait
+                                .toString(),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.amber,
+                                border: Border.all(
+                                  color: Colors.grey,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                                image: DecorationImage(
+                                  image: NetworkImage(snapshot
+                                      .data!.photos![index].src!.portrait
+                                      .toString()),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
                           ),
                         );

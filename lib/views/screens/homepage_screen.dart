@@ -64,7 +64,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
               color: theme.primaryColor,
             ),
           ).marginOnly(left: 10),
-          const ListviewCategoryWidget(),
+          ListviewCategoryWidget(),
           Text(
             "Tranding Wallpapers",
             style: TextStyle(

@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallpaper_world/controllers/theme_controller.dart';
+import 'package:wallpaper_world/views/screens/category.dart';
 
 class CategoryWidget extends StatelessWidget {
-  final index;
-  CategoryWidget({super.key, this.index});
-
-  final List<String> categoryName = [
-    "Cityscapes",
-    "Landscapes",
-    "Nature",
-    "Animals",
-  ];
+  final String categoryName;
+  final String imgScr;
+  CategoryWidget({super.key, required this.categoryName, required this.imgScr});
 
   final themeController = Get.put(ThemeController());
 
@@ -19,11 +14,16 @@ class CategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.to(CategoryScreen(
+          categoryName: categoryName,
+          imgScr: imgScr,
+        ));
+      },
       child: Container(
         alignment: Alignment.center,
-        width: 100,
-        height: 110,
+        width: 110,
+        height: 120,
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
@@ -37,10 +37,11 @@ class CategoryWidget extends StatelessWidget {
           ),
         ),
         child: Text(
-          categoryName[0],
+          categoryName,
           style: TextStyle(
             color: theme.primaryColor,
-            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ),

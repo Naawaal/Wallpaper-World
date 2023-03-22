@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:wallpaper_world/model/tranding_image_model.dart';
 
 import 'package:wallpaper_world/services/api_service/tranding_image_api.dart';
+import 'package:wallpaper_world/views/screens/full_image_screen.dart';
 
 class GridviewWidget extends StatelessWidget {
   const GridviewWidget({Key? key}) : super(key: key);
@@ -31,18 +32,31 @@ class GridviewWidget extends StatelessWidget {
               ),
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: Colors.amber,
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: NetworkImage(snapshot
-                          .data!.photos![index].src!.portrait
-                          .toString()),
-                      fit: BoxFit.cover,
+                return InkWell(
+                  onTap: () {
+                    Get.to(
+                      FullImageScreen(
+                        imageUrl: snapshot.data!.photos![index].src!.portrait
+                            .toString(),
+                      ),
+                    );
+                  },
+                  child: Hero(
+                    tag: snapshot.data!.photos![index].src!.portrait.toString(),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        border: Border.all(
+                          color: Colors.grey,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                        image: DecorationImage(
+                          image: NetworkImage(snapshot
+                              .data!.photos![index].src!.portrait
+                              .toString()),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 );

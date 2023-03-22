@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallpaper_world/consts/text.dart';
 import 'package:wallpaper_world/controllers/theme_controller.dart';
+import 'package:wallpaper_world/views/screens/search.dart';
 import 'package:wallpaper_world/views/widgets/gridview_widget.dart';
 import 'package:wallpaper_world/views/widgets/listview_category_widget.dart';
 import 'package:wallpaper_world/views/widgets/search_bar_widget.dart';
@@ -46,12 +47,29 @@ class _HomepageScreenState extends State<HomepageScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SearchBarWidget(),
+          SearchBarWidget(
+            controller: controller,
+            onSumbitted: (value) {
+              Get.to(const SearchScreen());
+            },
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            "Featured",
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: theme.primaryColor,
+            ),
+          ).marginOnly(left: 10),
           const ListviewCategoryWidget(),
           Text(
             "Tranding Wallpapers",
             style: TextStyle(
               fontSize: 22,
+              fontWeight: FontWeight.bold,
               color: theme.primaryColor,
             ),
           ).marginOnly(left: 10),

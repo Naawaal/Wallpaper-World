@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:wallpaper_world/controllers/theme_controller.dart';
 
 class SearchBarWidget extends StatelessWidget {
-  SearchBarWidget({super.key});
+  final TextEditingController? controller;
+  void Function(String)? onSumbitted;
+  SearchBarWidget({super.key, this.controller, this.onSumbitted});
 
   final ThemeController themeController = Get.put(ThemeController());
 
@@ -19,11 +21,13 @@ class SearchBarWidget extends StatelessWidget {
         ),
       ),
       child: TextFormField(
+        controller: controller,
         style: const TextStyle(
           fontSize: 16,
         ),
         keyboardType: TextInputType.text,
-        textInputAction: TextInputAction.done,
+        textInputAction: TextInputAction.search,
+        onFieldSubmitted: onSumbitted,
         decoration: const InputDecoration(
           hintText: "Search Wallpaper",
           errorBorder: InputBorder.none,

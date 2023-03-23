@@ -22,6 +22,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
     final ThemeData theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        iconTheme: theme.iconTheme,
         backgroundColor: theme.appBarTheme.backgroundColor,
         title: Text(
           appName,
@@ -50,7 +51,9 @@ class _HomepageScreenState extends State<HomepageScreen> {
           SearchBarWidget(
             controller: controller,
             onSumbitted: (value) {
-              Get.to(const SearchScreen());
+              if (controller.text.isNotEmpty) {
+                Get.to(() => const SearchScreen());
+              }
             },
           ),
           const SizedBox(
@@ -64,7 +67,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
               color: theme.primaryColor,
             ),
           ).marginOnly(left: 10),
-          ListviewCategoryWidget(),
+          const ListviewCategoryWidget(),
           Text(
             "Tranding Wallpapers",
             style: TextStyle(

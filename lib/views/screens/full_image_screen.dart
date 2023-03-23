@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:wallpaper_world/controllers/download_controller.dart';
+import 'package:wallpaper_world/views/screens/set_wallpaper.dart';
 
 class FullImageScreen extends StatefulWidget {
   String? imageUrl;
@@ -8,6 +10,8 @@ class FullImageScreen extends StatefulWidget {
   @override
   State<FullImageScreen> createState() => _FullImageScreenState();
 }
+
+final DonwloadController donwloadController = Get.put(DonwloadController());
 
 class _FullImageScreenState extends State<FullImageScreen> {
   @override
@@ -34,7 +38,9 @@ class _FullImageScreenState extends State<FullImageScreen> {
                 color: Colors.black.withOpacity(0.4),
               ),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  donwloadController.downloadImage(widget.imageUrl!);
+                },
                 icon: const Icon(Icons.download_outlined),
                 color: Colors.white,
                 iconSize: 30,
@@ -48,7 +54,23 @@ class _FullImageScreenState extends State<FullImageScreen> {
                 color: Colors.black.withOpacity(0.4),
               ),
               child: TextButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Container(
+                        alignment: Alignment.center,
+                        width: Get.width,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const SetWallpaper(),
+                      ).marginOnly(left: 5, right: 5);
+                    },
+                  );
+                },
                 icon: const Icon(
                   Icons.wallpaper_outlined,
                   color: Colors.white,
@@ -62,6 +84,20 @@ class _FullImageScreenState extends State<FullImageScreen> {
                     fontSize: 18,
                   ),
                 ),
+              ),
+            ).marginOnly(bottom: 10),
+            Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                shape: BoxShape.rectangle,
+                color: Colors.black.withOpacity(0.4),
+              ),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.share_outlined),
+                color: Colors.white,
+                iconSize: 30,
               ),
             ).marginOnly(bottom: 10),
           ],

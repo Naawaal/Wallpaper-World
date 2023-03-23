@@ -3,9 +3,14 @@ import 'package:get/get.dart';
 import 'package:wallpaper_world/services/api_service/tranding_image_api.dart';
 import 'package:wallpaper_world/views/widgets/category_widget.dart';
 
-class ListviewCategoryWidget extends StatelessWidget {
-  ListviewCategoryWidget({super.key});
+class ListviewCategoryWidget extends StatefulWidget {
+  const ListviewCategoryWidget({super.key});
 
+  @override
+  State<ListviewCategoryWidget> createState() => _ListviewCategoryWidgetState();
+}
+
+class _ListviewCategoryWidgetState extends State<ListviewCategoryWidget> {
   final List<String> categoryName = [
     "Cityscapes",
     "Landscapes",
@@ -37,7 +42,7 @@ class ListviewCategoryWidget extends StatelessWidget {
                   },
                 );
               }
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
             }),
       ).marginOnly(left: 5, top: 5, right: 5),
     );

@@ -8,6 +8,9 @@ class CustomTheme {
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: whiteColor,
     appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      ),
       centerTitle: true,
       backgroundColor: Colors.transparent,
       toolbarTextStyle: TextStyle(
@@ -30,6 +33,9 @@ class CustomTheme {
     scaffoldBackgroundColor: blackColor,
     appBarTheme: const AppBarTheme(
       centerTitle: true,
+      iconTheme: IconThemeData(
+        color: Colors.white,
+      ),
       backgroundColor: Colors.transparent,
       elevation: 0,
       toolbarTextStyle: TextStyle(

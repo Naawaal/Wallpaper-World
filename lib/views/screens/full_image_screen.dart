@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wallpaper_world/controllers/download_controller.dart';
+import 'package:wallpaper_world/controllers/set_wallpaper_controller.dart';
 import 'package:wallpaper_world/views/screens/set_wallpaper.dart';
 
 class FullImageScreen extends StatefulWidget {
@@ -12,6 +13,7 @@ class FullImageScreen extends StatefulWidget {
 }
 
 final DonwloadController donwloadController = Get.put(DonwloadController());
+final setWallpaperController = Get.put(SetWallpaperController());
 
 class _FullImageScreenState extends State<FullImageScreen> {
   @override
@@ -100,7 +102,9 @@ class _FullImageScreenState extends State<FullImageScreen> {
                 color: Colors.black.withOpacity(0.4),
               ),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setWallpaperController.shareImage(widget.imageUrl!);
+                },
                 icon: const Icon(Icons.share_outlined),
                 color: Colors.white,
                 iconSize: 30,

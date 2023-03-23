@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:get/get.dart';
+import 'package:share/share.dart';
 import 'package:wallpaper_manager_flutter/wallpaper_manager_flutter.dart';
 
 class SetWallpaperController extends GetxController {
@@ -53,5 +54,14 @@ class SetWallpaperController extends GetxController {
     } on PlatformException catch (e) {
       debugPrint('Error setting wallpaper: ${e.message}');
     }
+  }
+
+  Future<void> shareImage(String imageUrl) async {
+    String imagePath = imageUrl;
+    File cachedImage = await DefaultCacheManager().getSingleFile(imagePath);
+    String cachedImagePath = cachedImage.path;
+
+    await Share.shareFiles([cachedImagePath],
+        text: 'Check out this image form Wallpaper World!');
   }
 }

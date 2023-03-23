@@ -58,16 +58,22 @@ class _FullImageScreenState extends State<FullImageScreen> {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return Container(
-                        alignment: Alignment.center,
-                        width: Get.width,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const SetWallpaper(),
-                      ).marginOnly(left: 5, right: 5);
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: SetWallpaper(
+                              imageUrl: widget.imageUrl!,
+                            ),
+                          ).marginOnly(left: 5, right: 5),
+                        ],
+                      );
                     },
                   );
                 },
@@ -77,7 +83,7 @@ class _FullImageScreenState extends State<FullImageScreen> {
                   size: 30,
                 ),
                 label: const Text(
-                  "Set Wallpaper",
+                  "Apply",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

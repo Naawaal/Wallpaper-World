@@ -38,9 +38,12 @@ dependencies:
   get: ^4.6.5
   google_fonts: ^4.0.3
   http: ^0.13.5
-  permission_handler: ^10.2.0
+
   gallery_saver: ^2.3.2
   flutter_share: ^2.0.0
+  wallpaper_manager_flutter: ^0.0.2
+  flutter_cache_manager: ^3.3.0
+ 
 
 dev_dependencies:
   flutter_test:

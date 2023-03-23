@@ -15,10 +15,10 @@ class CategoryWidget extends StatelessWidget {
     final theme = Theme.of(context);
     return InkWell(
       onTap: () {
-        Get.to(CategoryScreen(
-          categoryName: categoryName,
-          imgScr: imgScr,
-        ));
+        Get.to(() => CategoryScreen(
+              categoryName: categoryName,
+              imgScr: imgScr,
+            ));
       },
       child: Container(
         alignment: Alignment.center,

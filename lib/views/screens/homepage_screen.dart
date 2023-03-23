@@ -57,7 +57,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
             },
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           Text(
             "Featured",
@@ -77,7 +77,7 @@ class _HomepageScreenState extends State<HomepageScreen> {
             ),
           ).marginOnly(left: 10),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           const Expanded(
             child: GridviewWidget(),

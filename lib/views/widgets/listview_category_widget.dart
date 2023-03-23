@@ -20,31 +20,30 @@ class _ListviewCategoryWidgetState extends State<ListviewCategoryWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: Get.width,
-        height: 50,
-        child: FutureBuilder(
-            future: TrandingImageApi().getTrendingImages(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: categoryName.length,
-                  itemBuilder: (context, index) {
-                    return CategoryWidget(
-                      categoryName: categoryName[index],
-                      imgScr: snapshot.data!.photos![index].src!.portrait
-                          .toString(),
-                    );
-                  },
-                );
-              }
-              return const Center(child: CircularProgressIndicator());
-            }),
-      ).marginOnly(left: 5, top: 5, right: 5),
-    );
+    return SizedBox(
+      width: Get.width,
+      height: 50,
+      child: FutureBuilder(
+          future: TrandingImageApi().getTrendingImages(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                shrinkWrap: true,
+                addAutomaticKeepAlives: true,
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: categoryName.length,
+                itemBuilder: (context, index) {
+                  return CategoryWidget(
+                    categoryName: categoryName[index],
+                    imgScr:
+                        snapshot.data!.photos![index].src!.portrait.toString(),
+                  );
+                },
+              );
+            }
+            return const Center(child: CircularProgressIndicator());
+          }),
+    ).marginOnly(left: 5, top: 5, right: 5);
   }
 }
